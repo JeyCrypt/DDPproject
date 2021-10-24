@@ -1,0 +1,33 @@
+---
+title: "LeafletAssignment"
+author: "JeyendraMaddali"
+date: "24/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## My First Leaflet Map
+Create a leaflet map object.
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+```{r}
+ManipalUniIcon <- makeIcon(
+   iconUrl = "https://manipal.edu/content/dam/manipal/mu/default-thumbnail-images/200x224/manipal-building-200x224.jpg",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+ManipalUniPopup <- c("<a href= 'https://manipal.edu' >Manipal University<br><img src='https://manipal.edu/content/dam/manipal/mu/default-thumbnail-images/200x224/manipal-building-200x224.jpg' width='210' height='132'  alt='MAHE Building' title='MAHE Building'></a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat=13.35315, lng=74.7848, popup = ManipalUniPopup)
+```
